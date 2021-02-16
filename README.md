@@ -1,1 +1,1 @@
-# iOS-industrial-dev
+OS-dev: промышленная разработка
