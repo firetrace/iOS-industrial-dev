@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/admin/Documents/iOS_industrial_dev_impl/iOS_industrial_dev/MyHabits/MyHabits.xcodeproj">
    </FileRef>
 </Workspace>
