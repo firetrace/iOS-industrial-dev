@@ -54,6 +54,7 @@ class HabitTableViewCell: UITableViewCell {
             make.bottom.equalTo(contentView).offset(bottomConst16)
             make.size.equalTo(20).priority(.low)
         }
+        
     }
 }
 

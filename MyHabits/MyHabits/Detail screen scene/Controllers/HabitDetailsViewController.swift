@@ -56,10 +56,9 @@ class HabitDetailsViewController: UIViewController {
     private func setupLayout() {
         view.addSubview(tableView)
         
-        NSLayoutConstraint.activate([tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                                     tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                                     tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                                     tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
         
     @objc private func edit() {
