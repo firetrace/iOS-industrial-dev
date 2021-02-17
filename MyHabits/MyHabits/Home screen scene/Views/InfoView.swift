@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class InfoView: UIView {
 
@@ -61,31 +62,27 @@ class InfoView: UIView {
         contentView.addSubview(titleLabel)
         contentView.addSubview(textView)
         
-        let contentViewWidth = contentView.widthAnchor.constraint(equalTo: widthAnchor)
-        contentViewWidth.priority = .required
-        let contentViewHeight = contentView.heightAnchor.constraint(equalTo: heightAnchor)
-        contentViewHeight.priority = .defaultLow
+        scrollView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self)
+        }
         
-        NSLayoutConstraint.activate([scrollView.topAnchor.constraint(equalTo: topAnchor),
-                                     scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                                     scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                                     scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-                                     
-                                     contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                                     contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-                                     contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-                                     contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-                                     
-                                     contentViewWidth,
-                                     contentViewHeight,
-
-                                     titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: topConst22),
-                                     titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConst16),
-                                     titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: trailingConst16),
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalTo(scrollView)
+            make.width.equalTo(self).priority(.required)
+            make.height.equalTo(self).priority(.low)
+        }
         
-                                     textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: topConst16),
-                                     textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConst16),
-                                     textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: trailingConst16),
-                                     textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: bottomConst16)])
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView).offset(topConst22)
+            make.leading.equalTo(contentView).offset(leadingConst16)
+            make.trailing.equalTo(contentView).offset(trailingConst16)
+        }
+        
+        textView.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel.snp.bottom).offset(topConst16)
+            make.leading.equalTo(contentView).offset(leadingConst16)
+            make.trailing.equalTo(contentView).offset(trailingConst16)
+            make.bottom.equalTo(contentView).offset(bottomConst16)
+        }
     }
 }

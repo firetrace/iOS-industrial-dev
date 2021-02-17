@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HabitCollectionViewCell: UICollectionViewCell {
     
@@ -111,23 +112,30 @@ extension HabitCollectionViewCell: CellProtocol {
         contentView.addSubview(dateLabel)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(checkButton)
+        
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView).offset(topConst20)
+            make.leading.equalTo(contentView).offset(leadingConst20)
+            make.width.equalTo(contentView).multipliedBy(0.7)
+        }
                 
-        NSLayoutConstraint.activate([nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: topConst20),
-                                     nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConst20),
-                                     nameLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.7),
-                                     
-                                     dateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: topConst4),
-                                     dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConst20),
-                                     dateLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
-                                     
-                                     descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConst20),
-                                     descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: bottomConst20),
-                                     descriptionLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
-                                                                          
-                                     checkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: trailingConst26),
-                                     checkButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-                                     checkButton.widthAnchor.constraint(equalToConstant: 36),
-                                     checkButton.heightAnchor.constraint(equalToConstant: 36)])
+        dateLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp.bottom).offset(topConst4)
+            make.leading.equalTo(contentView).offset(leadingConst20)
+            make.width.equalTo(contentView).multipliedBy(0.5)
+        }
+        
+        descriptionLabel.snp.makeConstraints { (make) in
+            make.leading.equalTo(contentView).offset(leadingConst20)
+            make.bottom.equalTo(contentView).offset(bottomConst20)
+            make.width.equalTo(contentView).multipliedBy(0.5)
+        }
+        
+        checkButton.snp.makeConstraints { (make) in
+            make.trailing.equalTo(contentView).offset(trailingConst26)
+            make.centerY.equalTo(contentView)
+            make.size.equalTo(36)
+        }
     }
     
     func updateCell(object: HabitModel) { self.data = object }
