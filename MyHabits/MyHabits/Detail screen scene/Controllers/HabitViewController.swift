@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HabitViewController: UIViewController {
     
@@ -42,10 +43,9 @@ class HabitViewController: UIViewController {
     private func setupLayout() {
         view.addSubview(habitView)
         
-        NSLayoutConstraint.activate([habitView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                                     habitView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                                     habitView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                                     habitView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
+        habitView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 
     @objc private func save() {

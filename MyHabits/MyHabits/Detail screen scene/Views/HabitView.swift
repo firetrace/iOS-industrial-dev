@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HabitView: UIView {
 
@@ -121,37 +122,52 @@ class HabitView: UIView {
         addSubview(datePicker)
         addSubview(delButton)
         
-        NSLayoutConstraint.activate([nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: topConst22),
-                                     nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingConst16),
-                                     nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailingConst16),
-                                     
-                                     nameText.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: topConst7),
-                                     nameText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingConst16),
-                                     nameText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailingConst16),
-                                     
-                                     colorLabel.topAnchor.constraint(equalTo: nameText.bottomAnchor, constant: topConst15),
-                                     colorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingConst16),
-                                     colorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailingConst16),
-                                     
-                                     colorButton.topAnchor.constraint(equalTo: colorLabel.bottomAnchor, constant: topConst7),
-                                     colorButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingConst16),
-                                     colorButton.widthAnchor.constraint(equalToConstant: 30),
-                                     colorButton.heightAnchor.constraint(equalToConstant: 30),
-                                     
-                                     dateLabel.topAnchor.constraint(equalTo: colorButton.bottomAnchor, constant: topConst15),
-                                     dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingConst16),
-                                     dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailingConst16),
-                                     
-                                     dateDescriptionLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: topConst7),
-                                     dateDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingConst16),
-                                     dateDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailingConst16),
-                                     
-                                     datePicker.topAnchor.constraint(equalTo: dateDescriptionLabel.bottomAnchor, constant: topConst15),
-                                     datePicker.leadingAnchor.constraint(equalTo: leadingAnchor),
-                                     datePicker.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-                                     delButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-                                     delButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomConst8)])
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self).offset(topConst22)
+            make.leading.equalTo(self).offset(leadingConst16)
+            make.trailing.equalTo(self).offset(trailingConst16)
+        }
+        
+        nameText.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp.bottom).offset(topConst7)
+            make.leading.equalTo(self).offset(leadingConst16)
+            make.trailing.equalTo(self).offset(trailingConst16)
+        }
+        
+        colorLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nameText.snp.bottom).offset(topConst15)
+            make.leading.equalTo(self).offset(leadingConst16)
+            make.trailing.equalTo(self).offset(trailingConst16)
+        }
+        
+        colorButton.snp.makeConstraints { (make) in
+            make.top.equalTo(colorLabel.snp.bottom).offset(topConst7)
+            make.leading.equalTo(self).offset(leadingConst16)
+            make.size.equalTo(30)
+        }
+        
+        dateLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(colorButton.snp.bottom).offset(topConst15)
+            make.leading.equalTo(self).offset(leadingConst16)
+            make.trailing.equalTo(self).offset(trailingConst16)
+        }
+        
+        dateDescriptionLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(dateLabel.snp.bottom).offset(topConst7)
+            make.leading.equalTo(self).offset(leadingConst16)
+            make.trailing.equalTo(self).offset(trailingConst16)
+        }
+        
+        datePicker.snp.makeConstraints { (make) in
+            make.top.equalTo(dateDescriptionLabel.snp.bottom).offset(topConst15)
+            make.leading.equalTo(self)
+            make.trailing.equalTo(self)
+        }
+        
+        delButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self)
+            make.bottom.equalTo(self).offset(bottomConst8)
+        }
     }
     
     @objc private func updateName(_ textField: UITextField) {

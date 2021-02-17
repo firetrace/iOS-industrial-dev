@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProgressCollectionViewCell: UICollectionViewCell {
     
@@ -64,21 +65,25 @@ extension ProgressCollectionViewCell: CellProtocol {
         contentView.addSubview(headerLabel)
         contentView.addSubview(progressLabel)
         contentView.addSubview(progressBar)
-                
-        NSLayoutConstraint.activate([headerLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: topConst10),
-                                     headerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConst12),
-                                     headerLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
-                                     
-                                     progressLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: topConst10),
-                                     progressLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: topConst10),
-                                     progressLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: trailingConst12),
-                                     progressLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3),
-                                     
-                                     progressBar.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: topConst10),
-                                     progressBar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConst12),
-                                     progressBar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: trailingConst12),
-                                     progressBar.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: bottomConst15)
-        ])
+        
+        headerLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView).offset(topConst10)
+            make.leading.equalTo(contentView).offset(leadingConst12)
+            make.width.equalTo(contentView).multipliedBy(0.5)
+        }
+        
+        progressLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView).offset(topConst10)
+            make.trailing.equalTo(contentView).offset(trailingConst12)
+            make.width.equalTo(contentView).multipliedBy(0.3)
+        }
+        
+        progressBar.snp.makeConstraints { (make) in
+            make.top.equalTo(headerLabel.snp.bottom).offset(topConst10)
+            make.leading.equalTo(contentView).offset(leadingConst12)
+            make.trailing.equalTo(contentView).offset(trailingConst12)
+            make.bottom.equalTo(contentView).offset(bottomConst15)
+        }
     }
     
     func updateCell(object: Float) {

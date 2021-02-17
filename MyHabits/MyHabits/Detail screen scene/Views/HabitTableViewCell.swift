@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HabitTableViewCell: UITableViewCell {
     
@@ -40,21 +41,20 @@ class HabitTableViewCell: UITableViewCell {
         contentView.addSubview(dateLabel)
         contentView.addSubview(checkImage)
         
-        let checkImageWidth = checkImage.widthAnchor.constraint(lessThanOrEqualToConstant: 20)
-        checkImageWidth.priority = .defaultLow
-        let checkImageHeight = checkImage.heightAnchor.constraint(lessThanOrEqualToConstant: 20)
-        checkImageHeight.priority = .defaultLow
+        dateLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView).offset(topConst16)
+            make.leading.equalTo(contentView).offset(leadingConst16)
+            make.bottom.equalTo(contentView).offset(bottomConst16)
+            make.width.equalTo(contentView).multipliedBy(0.7)
+        }
         
-        NSLayoutConstraint.activate([dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: topConst16),
-                                     dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: leadingConst16),
-                                     dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: bottomConst16),
-                                     dateLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.7),
-                                     
-                                     checkImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: topConst16),
-                                     checkImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: trailingConst16),
-                                     checkImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: bottomConst16),
-                                     checkImageHeight,
-                                     checkImageWidth])
+        checkImage.snp.makeConstraints { (make) in
+            make.top.equalTo(contentView).offset(topConst16)
+            make.trailing.equalTo(contentView).offset(trailingConst16)
+            make.bottom.equalTo(contentView).offset(bottomConst16)
+            make.size.equalTo(20).priority(.low)
+        }
+        
     }
 }
 
