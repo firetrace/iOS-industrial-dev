@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,7 @@
 		849E583625B8073A0065A998 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E583525B8073A0065A998 /* HabitModel.swift */; };
 		84C8552825DAC009008DF06C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8552725DAC009008DF06C /* InfoView.swift */; };
 		84C8552B25DAC097008DF06C /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8552A25DAC097008DF06C /* InfoModel.swift */; };
+		84E653F125DD625E0076C348 /* MyHabits_scheme.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E653F025DD625E0076C348 /* MyHabits_scheme.png */; };
 		EFC5F228EB6BEF9E2DFBDD73 /* Pods_MyHabits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB7505BE988F3BAA4579BFE /* Pods_MyHabits.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		849E583525B8073A0065A998 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		84C8552725DAC009008DF06C /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		84C8552A25DAC097008DF06C /* InfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
+		84E653F025DD625E0076C348 /* MyHabits_scheme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyHabits_scheme.png; sourceTree = "<group>"; };
 		9447B8D2DA786F538E726BEF /* Pods-MyHabits.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHabits.release.xcconfig"; path = "Target Support Files/Pods-MyHabits/Pods-MyHabits.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,13 +92,13 @@
 				64C6B3772F50E3C67DE252E6 /* Pods-MyHabits.debug.xcconfig */,
 				9447B8D2DA786F538E726BEF /* Pods-MyHabits.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		454CBFA3258C8C8D00D2CD16 = {
 			isa = PBXGroup;
 			children = (
+				84E653F025DD625E0076C348 /* MyHabits_scheme.png */,
 				454CBFAE258C8C8D00D2CD16 /* MyHabits */,
 				454CBFAD258C8C8D00D2CD16 /* Products */,
 				0E90FC2B76669353CA6E1CE3 /* Pods */,
@@ -276,6 +278,7 @@
 			files = (
 				454CBFBC258C8C8F00D2CD16 /* LaunchScreen.storyboard in Resources */,
 				454CBFB9258C8C8F00D2CD16 /* Assets.xcassets in Resources */,
+				84E653F125DD625E0076C348 /* MyHabits_scheme.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
