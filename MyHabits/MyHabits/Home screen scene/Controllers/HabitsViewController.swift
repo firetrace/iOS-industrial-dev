@@ -36,7 +36,7 @@ class HabitsViewController: UIViewController {
         super.viewDidLoad()
 
         if let auth = thisAuthDelegate {
-            print("test auth -> login is \(auth.checkLogin("user"))")
+            print("test auth -> login is \(auth.checkLogin("User"))")
             print("test auth -> password is \(auth.checkPassword("password"))")
         }
         

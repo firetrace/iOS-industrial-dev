@@ -24,7 +24,7 @@
 		45DC50A425B076B200A6F692 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DC50A325B076B200A6F692 /* HabitViewController.swift */; };
 		45DC50A725B0797E00A6F692 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DC50A625B0797E00A6F692 /* HabitView.swift */; };
 		45DC50AF25B0B1BB00A6F692 /* HabitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DC50AE25B0B1BB00A6F692 /* HabitDelegate.swift */; };
-		8437DCAB25DE71F800214614 /* LoginCheker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437DCAA25DE71F800214614 /* LoginCheker.swift */; };
+		8437DCAB25DE71F800214614 /* LoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437DCAA25DE71F800214614 /* LoginChecker.swift */; };
 		8437DCAF25DE749200214614 /* AuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437DCAE25DE749200214614 /* AuthDelegate.swift */; };
 		8437DCB225DE759C00214614 /* AuthSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437DCB125DE759C00214614 /* AuthSystem.swift */; };
 		845D746025CAA2510037B016 /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D745F25CAA2510037B016 /* CellModel.swift */; };
@@ -55,7 +55,7 @@
 		45DC50A325B076B200A6F692 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		45DC50A625B0797E00A6F692 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
 		45DC50AE25B0B1BB00A6F692 /* HabitDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDelegate.swift; sourceTree = "<group>"; };
-		8437DCAA25DE71F800214614 /* LoginCheker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCheker.swift; sourceTree = "<group>"; };
+		8437DCAA25DE71F800214614 /* LoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginChecker.swift; sourceTree = "<group>"; };
 		8437DCAE25DE749200214614 /* AuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDelegate.swift; sourceTree = "<group>"; };
 		8437DCB125DE759C00214614 /* AuthSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSystem.swift; sourceTree = "<group>"; };
 		845D745F25CAA2510037B016 /* CellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		8437DCA925DE71C600214614 /* Login screen scene */ = {
 			isa = PBXGroup;
 			children = (
-				8437DCAA25DE71F800214614 /* LoginCheker.swift */,
+				8437DCAA25DE71F800214614 /* LoginChecker.swift */,
 				8437DCAE25DE749200214614 /* AuthDelegate.swift */,
 				8437DCB125DE759C00214614 /* AuthSystem.swift */,
 			);
@@ -282,7 +282,7 @@
 				8437DCAF25DE749200214614 /* AuthDelegate.swift in Sources */,
 				454CBFC6258C906400D2CD16 /* HabitsStore.swift in Sources */,
 				849E583625B8073A0065A998 /* HabitModel.swift in Sources */,
-				8437DCAB25DE71F800214614 /* LoginCheker.swift in Sources */,
+				8437DCAB25DE71F800214614 /* LoginChecker.swift in Sources */,
 				45966FEC258CE25A007A3B5A /* HabitsViewController.swift in Sources */,
 				849E582625B6D1E30065A998 /* HabitDetailsViewController.swift in Sources */,
 				454CBFB0258C8C8D00D2CD16 /* AppDelegate.swift in Sources */,

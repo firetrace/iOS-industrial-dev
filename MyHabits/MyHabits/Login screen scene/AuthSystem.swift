@@ -9,6 +9,6 @@ import Foundation
 
 class AuthSystem: AuthDelegate {
     
-    func checkLogin(_ login: String) -> Bool { LoginCheker.shared.checkLogin(login: login) }
-    func checkPassword(_ password: String) -> Bool { LoginCheker.shared.checkPassword(password: password) }
+    func checkLogin(_ login: String) -> Bool { LoginChecker.shared.checkLogin(login: login) }
+    func checkPassword(_ password: String) -> Bool { LoginChecker.shared.checkPassword(password: password) }
 }

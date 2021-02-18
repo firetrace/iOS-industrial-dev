@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct LoginCheker {
+struct LoginChecker {
     
-    static let shared: LoginCheker = {
-        let this = LoginCheker()
+    static let shared: LoginChecker = {
+        let this = LoginChecker()
         return this
     }()
 
@@ -23,7 +23,7 @@ struct LoginCheker {
     }
     
     func checkLogin(login: String) -> Bool {
-        return self.login.uppercased()  == login
+        return self.login.uppercased() == login.uppercased()
     }
     
     func checkPassword(password: String) -> Bool {
