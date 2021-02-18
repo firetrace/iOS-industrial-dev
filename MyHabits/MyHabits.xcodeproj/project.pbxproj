@@ -24,6 +24,9 @@
 		45DC50A425B076B200A6F692 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DC50A325B076B200A6F692 /* HabitViewController.swift */; };
 		45DC50A725B0797E00A6F692 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DC50A625B0797E00A6F692 /* HabitView.swift */; };
 		45DC50AF25B0B1BB00A6F692 /* HabitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DC50AE25B0B1BB00A6F692 /* HabitDelegate.swift */; };
+		8437DCAB25DE71F800214614 /* LoginCheker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437DCAA25DE71F800214614 /* LoginCheker.swift */; };
+		8437DCAF25DE749200214614 /* AuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437DCAE25DE749200214614 /* AuthDelegate.swift */; };
+		8437DCB225DE759C00214614 /* AuthSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437DCB125DE759C00214614 /* AuthSystem.swift */; };
 		845D746025CAA2510037B016 /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D745F25CAA2510037B016 /* CellModel.swift */; };
 		849E582625B6D1E30065A998 /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E582525B6D1E30065A998 /* HabitDetailsViewController.swift */; };
 		849E582D25B6ED4E0065A998 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E582C25B6ED4E0065A998 /* HabitTableViewCell.swift */; };
@@ -52,6 +55,9 @@
 		45DC50A325B076B200A6F692 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		45DC50A625B0797E00A6F692 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
 		45DC50AE25B0B1BB00A6F692 /* HabitDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDelegate.swift; sourceTree = "<group>"; };
+		8437DCAA25DE71F800214614 /* LoginCheker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCheker.swift; sourceTree = "<group>"; };
+		8437DCAE25DE749200214614 /* AuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDelegate.swift; sourceTree = "<group>"; };
+		8437DCB125DE759C00214614 /* AuthSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSystem.swift; sourceTree = "<group>"; };
 		845D745F25CAA2510037B016 /* CellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		849E582525B6D1E30065A998 /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
 		849E582C25B6ED4E0065A998 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 		454CBFAE258C8C8D00D2CD16 /* MyHabits */ = {
 			isa = PBXGroup;
 			children = (
+				8437DCA925DE71C600214614 /* Login screen scene */,
 				84C8551A25DABD8F008DF06C /* Detail screen scene */,
 				84C8551925DABC96008DF06C /* Home screen scene */,
 				45DC50AD25B0B1A900A6F692 /* Protocols */,
@@ -133,6 +140,16 @@
 				4588853725B1BACD004403B8 /* CellProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8437DCA925DE71C600214614 /* Login screen scene */ = {
+			isa = PBXGroup;
+			children = (
+				8437DCAA25DE71F800214614 /* LoginCheker.swift */,
+				8437DCAE25DE749200214614 /* AuthDelegate.swift */,
+				8437DCB125DE759C00214614 /* AuthSystem.swift */,
+			);
+			path = "Login screen scene";
 			sourceTree = "<group>";
 		};
 		84C8551925DABC96008DF06C /* Home screen scene */ = {
@@ -262,11 +279,14 @@
 				45DC509E25B03D4600A6F692 /* HabitsConst.swift in Sources */,
 				45DC50A725B0797E00A6F692 /* HabitView.swift in Sources */,
 				45966FF9258CEAD0007A3B5A /* NavigationViewController.swift in Sources */,
+				8437DCAF25DE749200214614 /* AuthDelegate.swift in Sources */,
 				454CBFC6258C906400D2CD16 /* HabitsStore.swift in Sources */,
 				849E583625B8073A0065A998 /* HabitModel.swift in Sources */,
+				8437DCAB25DE71F800214614 /* LoginCheker.swift in Sources */,
 				45966FEC258CE25A007A3B5A /* HabitsViewController.swift in Sources */,
 				849E582625B6D1E30065A998 /* HabitDetailsViewController.swift in Sources */,
 				454CBFB0258C8C8D00D2CD16 /* AppDelegate.swift in Sources */,
+				8437DCB225DE759C00214614 /* AuthSystem.swift in Sources */,
 				84C8552825DAC009008DF06C /* InfoView.swift in Sources */,
 				45DC50AF25B0B1BB00A6F692 /* HabitDelegate.swift in Sources */,
 				845D746025CAA2510037B016 /* CellModel.swift in Sources */,

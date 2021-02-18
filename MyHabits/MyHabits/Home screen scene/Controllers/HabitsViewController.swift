@@ -9,6 +9,8 @@ import UIKit
 
 class HabitsViewController: UIViewController {
 
+    weak var thisAuthDelegate: AuthDelegate?
+    
     private lazy var addButton: UIBarButtonItem = {
         var button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(add))
         button.tintColor = getColorStyle(style: .magenta)
@@ -33,6 +35,11 @@ class HabitsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let auth = thisAuthDelegate {
+            print("test auth -> login is \(auth.checkLogin("user"))")
+            print("test auth -> password is \(auth.checkPassword("password"))")
+        }
+        
         view.backgroundColor = .systemBackground
         setupLayout()
     }

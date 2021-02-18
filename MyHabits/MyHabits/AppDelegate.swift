@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().prefersLargeTitles = true
         
         UITabBar.appearance().tintColor = color
-        
+                
         return true
     }
 }
