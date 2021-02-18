@@ -18,7 +18,7 @@ class TabBarViewController: UITabBarController {
     }
 
     private func setup() {
-        let habitsViewController = HabitsViewController()
+        let habitsViewController = HabitsViewController(presenter: HabitPresenter())
         habitsViewController.thisAuthDelegate = authSystem
         let infoViewController = InfoViewController()
         

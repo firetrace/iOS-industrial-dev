@@ -11,6 +11,8 @@ class HabitsViewController: UIViewController {
 
     weak var thisAuthDelegate: AuthDelegate?
     
+    private let presenter: HabitPresenterProtocol
+    
     private lazy var addButton: UIBarButtonItem = {
         var button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(add))
         button.tintColor = getColorStyle(style: .magenta)
@@ -31,7 +33,17 @@ class HabitsViewController: UIViewController {
         
         return view
     }()
-        
+    
+    init(presenter: HabitPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+        self.presenter.navigation = {[weak self] in self?.navigationController }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,13 +73,9 @@ class HabitsViewController: UIViewController {
                                      collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
                                      collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
     }
-    
-    @objc private func add() {
-        let habitViewController = HabitViewController(data: HabitModel())
-        habitViewController.thisDelegate = self
-        let habitNavigationViewController = UINavigationController(rootViewController: habitViewController)
         
-        navigationController?.present(habitNavigationViewController, animated: true, completion: nil)
+    @objc private func add() {
+        presenter.presentHabit(delegate: self)
     }
 }
 
