@@ -9,19 +9,20 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setup()
+    init(habits: HabitsViewController, info: InfoViewController) {
+        super.init(nibName: nil, bundle: nil)
+        
+        configure(habits: habits, info: info)
     }
-
-    private func setup() {
-        let habitsViewController = HabitsViewController()
-        let infoViewController = InfoViewController()
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configure(habits: HabitsViewController, info: InfoViewController) {
+        habits.tabBarItem = UITabBarItem(title: "Привычки", image: #imageLiteral(resourceName: "habits_tab_icon"), tag: 0)
+        info.tabBarItem = UITabBarItem(title: "Информация", image: UIImage(systemName: "info.circle.fill"), tag: 1)
         
-        habitsViewController.tabBarItem = UITabBarItem(title: "Привычки", image: #imageLiteral(resourceName: "habits_tab_icon"), tag: 0)
-        infoViewController.tabBarItem = UITabBarItem(title: "Информация", image: UIImage(systemName: "info.circle.fill"), tag: 1)
-        
-        viewControllers = [habitsViewController, infoViewController]
+        viewControllers = [habits, info]
     }
 }
