@@ -16,6 +16,13 @@ class HabitsViewController: UIViewController {
         return button
     }()
     
+    private lazy var quotationView: QuotationView = {
+        var view = QuotationView(frame: .zero)
+        view.toAutoLayout()
+        
+        return view
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -47,9 +54,13 @@ class HabitsViewController: UIViewController {
     }
     
     private func setupLayout() {
+        view.addSubview(quotationView)
         view.addSubview(collectionView)
         
-        NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        NSLayoutConstraint.activate([quotationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                                     quotationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+                                     quotationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                                     collectionView.topAnchor.constraint(equalTo: quotationView.bottomAnchor),
                                      collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                                      collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
                                      collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])

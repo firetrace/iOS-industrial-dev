@@ -30,6 +30,8 @@
 		849E583625B8073A0065A998 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E583525B8073A0065A998 /* HabitModel.swift */; };
 		84C8552825DAC009008DF06C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8552725DAC009008DF06C /* InfoView.swift */; };
 		84C8552B25DAC097008DF06C /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8552A25DAC097008DF06C /* InfoModel.swift */; };
+		84DD811125EE6A9300B73F6D /* QuotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD811025EE6A9300B73F6D /* QuotationView.swift */; };
+		84DD811425EE76C900B73F6D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD811325EE76C900B73F6D /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		849E583525B8073A0065A998 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
 		84C8552725DAC009008DF06C /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		84C8552A25DAC097008DF06C /* InfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
+		84DD811025EE6A9300B73F6D /* QuotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationView.swift; sourceTree = "<group>"; };
+		84DD811325EE76C900B73F6D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				454CBFC5258C906400D2CD16 /* HabitsStore.swift */,
+				84DD811325EE76C900B73F6D /* SwiftyJSON.swift */,
 				454CBFCF258C989E00D2CD16 /* HabitsDesign.swift */,
 				45DC509A25B0358900A6F692 /* HabitsExtension.swift */,
 				45DC509D25B03D4600A6F692 /* HabitsConst.swift */,
@@ -168,6 +173,7 @@
 				84C8552725DAC009008DF06C /* InfoView.swift */,
 				4588853125B1BA89004403B8 /* ProgressCollectionViewCell.swift */,
 				4588853425B1BAA2004403B8 /* HabitCollectionViewCell.swift */,
+				84DD811025EE6A9300B73F6D /* QuotationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,7 +273,9 @@
 				45966FEC258CE25A007A3B5A /* HabitsViewController.swift in Sources */,
 				849E582625B6D1E30065A998 /* HabitDetailsViewController.swift in Sources */,
 				454CBFB0258C8C8D00D2CD16 /* AppDelegate.swift in Sources */,
+				84DD811425EE76C900B73F6D /* SwiftyJSON.swift in Sources */,
 				84C8552825DAC009008DF06C /* InfoView.swift in Sources */,
+				84DD811125EE6A9300B73F6D /* QuotationView.swift in Sources */,
 				45DC50AF25B0B1BB00A6F692 /* HabitDelegate.swift in Sources */,
 				845D746025CAA2510037B016 /* CellModel.swift in Sources */,
 				84C8552B25DAC097008DF06C /* InfoModel.swift in Sources */,
