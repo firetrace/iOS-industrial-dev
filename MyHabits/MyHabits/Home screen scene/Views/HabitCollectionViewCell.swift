@@ -16,7 +16,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         didSet {
             nameLabel.text = data.name
             nameLabel.textColor = data.color
-            if let habit = data.getHabit() {
+            if let habit = try? data.getHabit() {
                 dateLabel.text = habit.dateString
                 
                 updateCheckButton(habit: habit)
@@ -75,7 +75,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
     }
     
     @objc private func checkHabit() {
-        if let habit = data.getHabit(), habit.isAlreadyTakenToday == false {
+        if let habit = try? data.getHabit(), habit.isAlreadyTakenToday == false {
             HabitsStore.shared.track(habit)
             thisDelegate?.updateData()
         }

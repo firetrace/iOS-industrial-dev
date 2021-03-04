@@ -37,20 +37,18 @@ struct HabitModel {
         self.color = color
     }
     
-    func getHabit() -> Habit? {
+    func getHabit() throws -> Habit {
         guard let index = id else {
-            return nil
+            throw DataError.dataNotFound
         }
         return HabitsStore.shared.habits[index]
     }
     
     mutating func updateData() {
-        guard let habit = getHabit() else {
-            return
+        if let habit = try? getHabit() {
+            self.name = habit.name
+            self.date = habit.date
+            self.color = habit.color
         }
-        
-        self.name = habit.name
-        self.date = habit.date
-        self.color = habit.color
     }
 }

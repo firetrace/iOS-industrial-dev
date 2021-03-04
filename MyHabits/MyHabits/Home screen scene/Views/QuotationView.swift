@@ -23,30 +23,20 @@ class QuotationView: UIView {
             if (value < 0) { value = value * -1 }
             
             if let url = URL(string: "https://api.forismatic.com/api/1.0/?method=getQuote&key=\(value.description.prefix(6))&format=json&lang=ru") {
-               URLSession.shared.dataTask(with: url) { data, response, error in
-                  if let data = data {
-                    let json = JSON(data)
-                    DispatchQueue.main.async { [weak self] in
-                        self?.quoteLabel.text = json["quoteText"].string ?? "Сдесь могла быть ваша реклама"
-                        self?.authorLabel.text = json["quoteAuthor"].string ?? "<без автора>"
- 
-                        self?.tickTimer = Timer(timeInterval: 1.0, repeats: true, block: { [weak self] (_) in
-                            self?.tick -= 1
-                            if let tick = self?.tick {
-                                self?.tickLabel.text = tick <= 0 ? "обновление ..." : "до обновления \(self?.tick ?? 0) cек ..."
-                            } else {
-                                self?.tickLabel.text = nil
+                self?.loadQuote(url: url, completed: { (result) in
+                    switch result {
+                    case .success(let json):
+                        if let json = json {
+                            DispatchQueue.main.async { [weak self] in
+                                self?.updateQuote(quote: json["quoteText"].string, author: json["quoteAuthor"].string)
                             }
-                            
-                        })
-                        
-                        if let timer = self?.tickTimer {
-                            RunLoop.current.add(timer, forMode: .common)
-                            timer.fire()
+                        }
+                    case .failure(let error):
+                        DispatchQueue.main.async { [weak self] in
+                            self?.updateQuote(quote: "\(error.errorDescription ?? "")...", author: nil)
                         }
                     }
-                  }
-               }.resume()
+                })
             }
         })
         
@@ -116,5 +106,41 @@ class QuotationView: UIView {
     private func start() {
         RunLoop.current.add(quoteTimer, forMode: .common)
         quoteTimer.fire()
+    }
+    
+    private func loadQuote(url: URL, completed: @escaping (Result<JSON?, LoadError>) -> Void) {
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if error != nil {
+                completed(.failure(LoadError.failLoadingData))
+            } else {
+                if let data = data {
+                    completed(.success(JSON(data)))
+                }
+                else {
+                    completed(.failure(LoadError.failParseData))
+                }
+            }
+        }.resume()
+    }
+        
+    private func updateQuote(quote: String?, author: String?) {
+        quoteLabel.text = quote
+        authorLabel.text = author
+
+        tickTimer = Timer(timeInterval: 1.0, repeats: true, block: { [weak self] (_) in
+            self?.tick -= 1
+            if let tick = self?.tick {
+                self?.tickLabel.text = tick <= 0 ? "обновление ..." : "до обновления \(self?.tick ?? 0) cек ..."
+            } else {
+                self?.tickLabel.text = nil
+            }
+        
+        })
+    
+        if let timer = tickTimer {
+            RunLoop.current.add(timer, forMode: .common)
+            timer.fire()
+        }
     }
 }

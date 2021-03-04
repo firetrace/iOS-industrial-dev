@@ -50,14 +50,22 @@ class HabitViewController: UIViewController {
 
     @objc private func save() {
         if (isNew == false) {
-            if let habit = habitView.data.getHabit() {
-
+            do {
+                let habit = try habitView.data.getHabit()
+                
                 habit.name = habitView.data.name
                 habit.date = habitView.data.date
                 habit.color = habitView.data.color
                 
                 HabitsStore.shared.save()
+            } catch DataError.dataNotFound {
+                let alert = UIAlertController(title: "Ошибка сохранения",
+                                              message: DataError.dataNotFound.errorDescription,
+                                              preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: nil))
+                    thisDelegate?.presentController(alert, animated: true, completion: nil)
             }
+            catch { }   
         } else { HabitsStore.shared.habits.append(Habit(name: habitView.data.name, date: habitView.data.date, color: habitView.data.color)) }
         
         thisDelegate?.updateData()
