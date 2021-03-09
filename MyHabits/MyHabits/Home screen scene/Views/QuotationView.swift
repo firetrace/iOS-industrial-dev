@@ -8,7 +8,7 @@
 import UIKit
 
 class QuotationView: UIView {
-        
+            
     private lazy var quoteLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.numberOfLines = 0
@@ -28,20 +28,22 @@ class QuotationView: UIView {
                 
         return label
     }()
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = UIColor(displayP3Red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
         setupLayout()
-        start()
     }
         
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+        
+    func updateData(quote: String, author: String) {
+        quoteLabel.text = quote
+        authorLabel.text = author
+    }
     
     private func setupLayout() {
         addSubview(quoteLabel)
@@ -56,30 +58,4 @@ class QuotationView: UIView {
                                      authorLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomConst8)
         ])
     }
-    
-    private func start() {
-        let timer = Timer(timeInterval: 60.0, target: self, selector: #selector(getQuote), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer, forMode: .common)
-        
-        timer.fire()
-    }
-    
-    @objc private func getQuote() {
-        
-        var value = Date().hashValue
-        if (value < 0) { value = value * -1 }
-        
-        if let url = URL(string: "https://api.forismatic.com/api/1.0/?method=getQuote&key=\(value.description.prefix(6))&format=json&lang=ru") {
-           URLSession.shared.dataTask(with: url) { data, response, error in
-              if let data = data {
-                let json = JSON(data)
-                DispatchQueue.main.async { [weak self] in
-                    self?.quoteLabel.text = json["quoteText"].string ?? "Сдесь могла быть ваша реклама"
-                    self?.authorLabel.text = json["quoteAuthor"].string ?? "<без автора>"
-                }
-              }
-           }.resume()
-        }
-    }
-
 }
