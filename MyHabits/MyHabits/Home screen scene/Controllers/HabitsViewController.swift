@@ -9,11 +9,20 @@ import UIKit
 
 class HabitsViewController: UIViewController {
 
+    private var timer: Timer?
+    
     private lazy var addButton: UIBarButtonItem = {
         var button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(add))
         button.tintColor = getColorStyle(style: .magenta)
             
         return button
+    }()
+    
+    private lazy var quotationView: QuotationView = {
+        var view = QuotationView(frame: .zero)
+        view.toAutoLayout()
+        
+        return view
     }()
     
     private lazy var collectionView: UICollectionView = {
@@ -34,7 +43,9 @@ class HabitsViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
+        
         setupLayout()
+        startLoadQuote(interval: 60.0) { [weak self] (quote, author) in self?.quotationView.updateData(quote: quote ?? "", author: author ?? "") }
     }
         
     override func viewWillAppear(_ animated: Bool) {
@@ -46,10 +57,18 @@ class HabitsViewController: UIViewController {
         tabBarController?.navigationItem.rightBarButtonItem = addButton
     }
     
+    deinit {
+        stopLoadQuote()
+    }
+    
     private func setupLayout() {
+        view.addSubview(quotationView)
         view.addSubview(collectionView)
         
-        NSLayoutConstraint.activate([collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        NSLayoutConstraint.activate([quotationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                                     quotationView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+                                     quotationView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+                                     collectionView.topAnchor.constraint(equalTo: quotationView.bottomAnchor),
                                      collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                                      collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
                                      collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
@@ -148,4 +167,44 @@ extension HabitsViewController: HabitDelegate {
     func dismissController(animated: Bool, completion: (() -> Void)?) {
         self.dismiss(animated: animated, completion: completion)
     }
+}
+
+extension HabitsViewController: QuoteProtocol {
+    
+    @objc private func getQuote(completion: @escaping (String?, String?) -> Void) {
+        var value = Date().hashValue
+        if (value < 0) { value = value * -1 }
+        
+        if let url = URL(string: "https://api.forismatic.com/api/1.0/?method=getQuote&key=\(value.description.prefix(6))&format=json&lang=ru") {
+           URLSession.shared.dataTask(with: url) { data, response, error in
+              if let data = data {
+                let json = JSON(data)
+                DispatchQueue.main.async { completion(json["quoteText"].string, json["quoteAuthor"].string) }
+              }
+           }.resume()
+        }
+    }
+    
+    func startLoadQuote(interval: Double, completion: @escaping (String?, String?) -> Void) {
+        if (timer != nil) {
+            timer?.invalidate()
+            timer = nil
+        }
+        
+        timer = Timer(timeInterval: interval, repeats: true, block: { [weak self] _ in
+            self?.getQuote(completion: completion)
+        })
+
+        if let timer = timer {
+            RunLoop.current.add(timer, forMode: .common)
+            timer.fire()
+        }
+    }
+    
+    func stopLoadQuote() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    
 }
